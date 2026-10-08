@@ -360,3 +360,592 @@ entities:
           - dps_val: null
             value: false
           - value: true
+
+  - entity: time
+    name: Monday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Monday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Monday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Monday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Tuesday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Tuesday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Tuesday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Tuesday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Wednesday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Wednesday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Wednesday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Wednesday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Thursday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Thursday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Thursday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Thursday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Friday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Friday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Friday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Friday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Saturday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Saturday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Saturday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Saturday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Sunday 1 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "00000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "0000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Sunday 1 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000ff000000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000ff0000000000000000000000000000000000000000000000000000000000000000000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Sunday 2 start
+    icon: "mdi:clock-start"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff000000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+  - entity: time
+    name: Sunday 2 end
+    icon: "mdi:clock-end"
+    category: config
+    dps:
+      - id: 110
+        type: base64
+        name: hour
+        mask: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff00"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
+      - id: 110
+        type: base64
+        name: minute
+        mask: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff"  # yamllint disable-line rule:line-length
+        optional: true
+        mapping:
+          - dps_val: 136
+            value: 0
