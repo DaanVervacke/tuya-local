@@ -2,14 +2,11 @@ from __future__ import annotations
 
 import base64
 import logging
-from datetime import timedelta
 
 from homeassistant.const import CONF_ENTITY_ID
 from homeassistant.core import Event, HomeAssistant, callback
-from homeassistant.helpers.event import (
-    async_track_state_change_event,
-    async_track_time_interval,
-)
+from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers.event import async_track_state_change_event
 
 from ..const import CONF_SCHEDULE_ENTITY
 
@@ -32,7 +29,6 @@ UNSET = 136
 MAX_WINDOWS = 2
 RECORD_BYTES = 5
 TOTAL_BYTES = 70
-RECONCILE_INTERVAL = timedelta(minutes=1)
 
 
 def encode_schedule(ranges_by_day):
@@ -116,12 +112,7 @@ class ScheduleSync:
                 self._hass, [self._helper], self._helper_changed
             )
         )
-        self._unsubs.append(
-            async_track_time_interval(
-                self._hass, self.async_reconcile, RECONCILE_INTERVAL
-            )
-        )
-        await self.async_reconcile()
+        await self._async_sync(raise_when_blocked=False)
 
     @callback
     def async_shutdown(self):
@@ -131,10 +122,15 @@ class ScheduleSync:
 
     @callback
     def _helper_changed(self, event: Event):
-        self._hass.async_create_task(self.async_reconcile())
+        self._hass.async_create_task(self._async_sync())
 
-    async def async_reconcile(self, now=None):
-        """Send the helper schedule to the mower if it changed."""
+    async def _async_sync(self, raise_when_blocked: bool = True):
+        """Send the helper schedule to the mower if it changed.
+
+        The mower only accepts schedule writes while it is docked or
+        charging. A write attempted in any other activity raises, and
+        nothing retries it: the next helper edit tries again.
+        """
         ranges = await self._async_fetch_ranges()
         if ranges is None:
             return
@@ -161,10 +157,14 @@ class ScheduleSync:
             return
         activity = self._device.get_property(ACTIVITY_DP)
         if activity not in DOCKED_ACTIVITIES:
-            _LOGGER.debug(
-                "Mower is %s, deferring schedule write",
-                activity,
+            message = (
+                f"Cannot sync schedule from {self._helper}: the mower is "
+                f"{activity}, it only accepts schedule writes while docked "
+                "or charging"
             )
+            if raise_when_blocked:
+                raise HomeAssistantError(message)
+            _LOGGER.warning(message)
             return
         await self._device.async_set_properties({SCHEDULE_DP: blob})
         self._last_written = blob

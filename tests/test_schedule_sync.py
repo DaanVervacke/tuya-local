@@ -5,6 +5,7 @@ from datetime import time as time_of_day
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
+from homeassistant.exceptions import HomeAssistantError
 
 from custom_components.tuya_local.const import CONF_SCHEDULE_ENTITY
 from custom_components.tuya_local.helpers.schedule_sync import (
@@ -132,11 +133,11 @@ async def test_decode_invalid_blob():
 
 
 @pytest.mark.asyncio
-async def test_reconcile_writes_while_docked():
+async def test_sync_writes_while_docked():
     sync, device = make_sync(activity="STANDBY")
     ranges = {**EMPTY_RANGES, "monday": [{"from": "08:30", "to": "10:00"}]}
     with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
+        await sync._async_sync()
     device.async_set_properties.assert_awaited_once()
     dps = device.async_set_properties.await_args.args[0]
     assert list(dps.keys()) == [110]
@@ -145,47 +146,47 @@ async def test_reconcile_writes_while_docked():
 
 
 @pytest.mark.asyncio
-async def test_reconcile_defers_while_mowing():
+async def test_sync_raises_while_mowing():
     sync, device = make_sync(activity="MOWING")
     ranges = {**EMPTY_RANGES, "monday": [{"from": "08:30", "to": "10:00"}]}
     with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
+        with pytest.raises(HomeAssistantError, match="MOWING"):
+            await sync._async_sync()
     device.async_set_properties.assert_not_awaited()
 
 
 @pytest.mark.asyncio
-async def test_reconcile_writes_after_docking():
+async def test_setup_sync_logs_instead_of_raising_while_mowing(hass):
+    hass.states.async_set("schedule.test", "off")
     sync, device = make_sync(activity="MOWING")
+    sync._hass = hass
     ranges = {**EMPTY_RANGES, "monday": [{"from": "08:30", "to": "10:00"}]}
     with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
-    device.get_property = Mock(return_value="CHARGING")
-    with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
-    device.async_set_properties.assert_awaited_once()
+        await sync.async_setup()
+    device.async_set_properties.assert_not_awaited()
 
 
 @pytest.mark.asyncio
-async def test_reconcile_skips_empty_helper():
+async def test_sync_skips_empty_helper():
     sync, device = make_sync()
     with patch.object(
         sync, "_async_fetch_ranges", AsyncMock(return_value=EMPTY_RANGES)
     ):
-        await sync.async_reconcile()
+        await sync._async_sync()
     device.async_set_properties.assert_not_awaited()
 
 
 @pytest.mark.asyncio
-async def test_reconcile_clears_after_windows_removed():
+async def test_sync_clears_after_windows_removed():
     sync, device = make_sync()
     ranges = {**EMPTY_RANGES, "monday": [{"from": "08:30", "to": "10:00"}]}
     with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
+        await sync._async_sync()
     device.async_set_properties.reset_mock()
     with patch.object(
         sync, "_async_fetch_ranges", AsyncMock(return_value=EMPTY_RANGES)
     ):
-        await sync.async_reconcile()
+        await sync._async_sync()
     device.async_set_properties.assert_awaited_once()
     dps = device.async_set_properties.await_args.args[0]
     days = decode_schedule(dps[110])
@@ -193,18 +194,18 @@ async def test_reconcile_clears_after_windows_removed():
 
 
 @pytest.mark.asyncio
-async def test_reconcile_skips_unchanged_schedule():
+async def test_sync_skips_unchanged_schedule():
     sync, device = make_sync()
     ranges = {**EMPTY_RANGES, "monday": [{"from": "08:30", "to": "10:00"}]}
     fetch = AsyncMock(return_value=ranges)
     with patch.object(sync, "_async_fetch_ranges", fetch):
-        await sync.async_reconcile()
-        await sync.async_reconcile()
+        await sync._async_sync()
+        await sync._async_sync()
     device.async_set_properties.assert_awaited_once()
 
 
 @pytest.mark.asyncio
-async def test_reconcile_skips_too_many_windows():
+async def test_sync_skips_too_many_windows():
     sync, device = make_sync()
     ranges = {
         **EMPTY_RANGES,
@@ -215,7 +216,7 @@ async def test_reconcile_skips_too_many_windows():
         ],
     }
     with patch.object(sync, "_async_fetch_ranges", AsyncMock(return_value=ranges)):
-        await sync.async_reconcile()
+        await sync._async_sync()
     device.async_set_properties.assert_not_awaited()
 
 
@@ -233,6 +234,6 @@ async def test_setup_with_helper_registers_listeners(hass):
     sync, _ = make_sync()
     sync._hass = hass
     await sync.async_setup()
-    assert len(sync._unsubs) == 2
+    assert len(sync._unsubs) == 1
     sync.async_shutdown()
     assert sync._unsubs == []
