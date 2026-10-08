@@ -24,6 +24,7 @@ from custom_components.tuya_local.const import (
     CONF_LOCAL_KEY,
     CONF_POLL_ONLY,
     CONF_PROTOCOL_VERSION,
+    CONF_SCHEDULE_ENTITY,
     CONF_TYPE,
     DOMAIN,
 )
@@ -809,6 +810,7 @@ async def test_options_flow_modifies_config(hass, bypass_setup, mocker):
         CONF_LOCAL_KEY: "new_key",
         CONF_POLL_ONLY: False,
         CONF_PROTOCOL_VERSION: 3.3,
+        CONF_SCHEDULE_ENTITY: "",
     }
     assert "create_entry" == result["type"]
     assert "" == result["title"]

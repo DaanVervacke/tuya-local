@@ -95,7 +95,8 @@
                     "host": "IPアドレスまたはホスト名",
                     "local_key": "ローカルキー",
                     "protocol_version": "プロトコルのバージョン (不明な場合はAutoを試してください)",
-                    "poll_only": "投票のみ (デバイスが動作しない場合)"
+                    "poll_only": "投票のみ (デバイスが動作しない場合)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },

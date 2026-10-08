@@ -95,7 +95,8 @@
                     "host": "Adresse IP ou Nom d'hote",
                     "local_key": "Local key",
                     "protocol_version": "Version du Protocole (Auto si inconnu)",
-                    "poll_only": "Poll only (essayez ceci si votre appareil ne fonctionne pas complètement)"
+                    "poll_only": "Poll only (essayez ceci si votre appareil ne fonctionne pas complètement)",
+                    "schedule_entity": "Assistant de planification (sync. du programme de tonte)"
                 }
             }
         },

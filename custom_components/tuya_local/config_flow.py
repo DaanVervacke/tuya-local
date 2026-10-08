@@ -35,6 +35,7 @@ from .const import (
     CONF_MODEL,
     CONF_POLL_ONLY,
     CONF_PROTOCOL_VERSION,
+    CONF_SCHEDULE_ENTITY,
     CONF_TYPE,
     CONF_USER_CODE,
     DATA_STORE,
@@ -634,6 +635,14 @@ class OptionsFlowHandler(OptionsFlow):
             else:
                 errors["base"] = "connection"
 
+        schedule_options = [
+            SelectOptionDict(value="", label="None (schedule not synced)")
+        ]
+        for state in self.hass.states.async_all("schedule"):
+            schedule_options.append(
+                SelectOptionDict(value=state.entity_id, label=state.name)
+            )
+
         schema = {
             vol.Required(
                 CONF_LOCAL_KEY,
@@ -647,6 +656,19 @@ class OptionsFlowHandler(OptionsFlow):
             vol.Required(
                 CONF_POLL_ONLY, default=config.get(CONF_POLL_ONLY, False)
             ): bool,
+            vol.Optional(
+                CONF_SCHEDULE_ENTITY,
+                default=config.get(CONF_SCHEDULE_ENTITY, ""),
+                description=(
+                    "Weekly schedule helper that the mower follows. The"
+                    " schedule is written to the mower while it is docked."
+                ),
+            ): SelectSelector(
+                SelectSelectorConfig(
+                    options=schedule_options,
+                    mode=SelectSelectorMode.DROPDOWN,
+                )
+            ),
         }
         cfg = await self.hass.async_add_executor_job(
             get_config,

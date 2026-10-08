@@ -95,7 +95,8 @@
                     "host": "Indirizzo IP o hostname",
                     "local_key": "Local key",
                     "protocol_version": "Versione protocollo (prova 'auto' in caso di dubbi)",
-                    "poll_only": "Poll only (prova questa opzione se il dispositivo non funziona correttamente)"
+                    "poll_only": "Poll only (prova questa opzione se il dispositivo non funziona correttamente)",
+                    "schedule_entity": "Assistente di pianificazione (sincronizzazione programma)"
                 }
             }
         },

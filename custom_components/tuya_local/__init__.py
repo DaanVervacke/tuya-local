@@ -25,11 +25,13 @@ from .const import (
     CONF_POLL_ONLY,
     CONF_PROTOCOL_VERSION,
     CONF_TYPE,
+    DATA_SCHEDULE_SYNC,
     DOMAIN,
 )
 from .device import async_delete_device, get_device_id, setup_device
 from .discovery import async_start_discovery, async_stop_discovery
 from .helpers.device_config import get_config
+from .helpers.schedule_sync import ScheduleSync
 from .services import async_setup_services
 
 _LOGGER = logging.getLogger(__name__)
@@ -1125,6 +1127,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     await hass.config_entries.async_forward_entry_setups(entry, entities)
     await async_setup_services(hass, entities)
 
+    sync = ScheduleSync(hass, entry, device)
+    hass.data.setdefault(DATA_SCHEDULE_SYNC, {})[device_id] = sync
+    await sync.async_setup()
+
     entry.add_update_listener(async_update_entry)
 
     return True
@@ -1134,6 +1140,10 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     device_id = get_device_id(entry.data)
     _LOGGER.debug("Unloading entry for device: %s", device_id)
     config = entry.data
+    syncs = hass.data.get(DATA_SCHEDULE_SYNC, {})
+    sync = syncs.pop(device_id, None)
+    if sync is not None:
+        sync.async_shutdown()
     domain_data = hass.data.get(DOMAIN, {})
     data = domain_data.get(device_id)
     if data is None:

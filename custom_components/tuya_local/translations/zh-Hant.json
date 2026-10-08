@@ -95,7 +95,8 @@
                     "host": "IP位址或主機名",
                     "local_key": "Local key",
                     "protocol_version": "協議版本（如果不清楚，請選擇自動）",
-                    "poll_only": "僅輪詢（如果設備無法正常運作，請選擇此項）"
+                    "poll_only": "僅輪詢（如果設備無法正常運作，請選擇此項）",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },
@@ -121,7 +122,7 @@
                 },
                 "device": {
                     "name": "設備",
-                    "description": "要發送命令的紅外線設備。這是可選的，僅在命令保存時帶有設備时需要。" 
+                    "description": "要發送命令的紅外線設備。這是可選的，僅在命令保存時帶有設備时需要。"
                 }
             }
         }

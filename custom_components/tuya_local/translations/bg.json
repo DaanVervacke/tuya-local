@@ -95,7 +95,8 @@
                     "host": "IP адрес или име на хост",
                     "local_key": "Локален ключ",
                     "protocol_version": "Версия на протокола (опитайте автоматична, ако не е известна)",
-                    "poll_only": "Само анкетиране (опитайте това, ако устройството ви не работи напълно)"
+                    "poll_only": "Само анкетиране (опитайте това, ако устройството ви не работи напълно)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },
@@ -695,7 +696,6 @@
                     "spanish": "Español",
                     "thai": "ภาษาไทย",
                     "turkish": "Türkçe",
-                    "polish": "Polski",
                     "vietnamese": "Tiếng Việt"
                 }
             },

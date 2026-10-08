@@ -10,6 +10,8 @@ CONF_MODEL = "model"
 CONF_POLL_ONLY = "poll_only"
 CONF_DEVICE_CID = "device_cid"
 CONF_PROTOCOL_VERSION = "protocol_version"
+CONF_SCHEDULE_ENTITY = "schedule_entity"
+DATA_SCHEDULE_SYNC = DOMAIN + "_schedule_sync"
 API_PROTOCOL_VERSIONS = [3.3, 3.1, 3.2, 3.4, 3.5, 3.22, 3.42, 3.52]
 
 CONF_APP_TYPE = "tuya_app_type"

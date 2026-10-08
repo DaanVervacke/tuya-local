@@ -95,7 +95,8 @@
                     "host": "Adresă IP sau hostname",
                     "local_key": "Cheie locală",
                     "protocol_version": "Versiunea protocolului (încercați auto dacă nu este cunoscută)",
-                    "poll_only": "Doar interogare (încercați dacă dispozitivul nu funcționează complet)"
+                    "poll_only": "Doar interogare (încercați dacă dispozitivul nu funcționează complet)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },
@@ -1158,7 +1159,7 @@
                     "12_hour": "12 ore",
                     "24_hour": "24 ore"
                 }
-            }            
+            }
         },
         "sensor": {
             "ambient_temperature": {
@@ -1575,4 +1576,3 @@
         }
     }
 }
-

@@ -95,7 +95,8 @@
                     "host": "Alamat IP atau nama hos",
                     "local_key": "Kunci lokal (local_key)",
                     "protocol_version": "Versi protokol (coba otomatis bila tidak diketahui)",
-                    "poll_only": "Hanya poll (Coba ini bila perangkat Anda tidak berfungsi secara penuh)"
+                    "poll_only": "Hanya poll (Coba ini bila perangkat Anda tidak berfungsi secara penuh)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },

@@ -94,7 +94,8 @@
                     "host": "Adreça IP o nom d'amfitrió",
                     "local_key": "Clau local",
                     "protocol_version": "Versió del protocol (intenteu-ho automàticament si no es coneix)",
-                    "poll_only": "Només enquestes (proveu això si el vostre dispositiu no funciona completament)"
+                    "poll_only": "Només enquestes (proveu això si el vostre dispositiu no funciona completament)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 },
                 "description": "[Seguiu aquestes instruccions per a trobar la vostra clau local.]({device_details_url})"
             }

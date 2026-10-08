@@ -95,7 +95,8 @@
                     "host": "IP cím vagy állomásnév",
                     "local_key": "Helyi kulcs (local_key)",
                     "protocol_version": "Protokol verzió (hagyd auto-n, ha nem tudod)",
-                    "poll_only": "Csak olvasás (próbáld ki ezt, ha az eszköz nem működik rendesen)"
+                    "poll_only": "Csak olvasás (próbáld ki ezt, ha az eszköz nem működik rendesen)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },

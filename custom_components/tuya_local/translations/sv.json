@@ -95,7 +95,8 @@
                     "host": "IP-adress eller värdnamn",
                     "local_key": "Lokal nyckel",
                     "protocol_version": "Protokollversion (prova auto om okänd)",
-                    "poll_only": "Endast polling (prova detta om din enhet inte fungerar helt)"
+                    "poll_only": "Endast polling (prova detta om din enhet inte fungerar helt)",
+                    "schedule_entity": "Schemahjälpare (synk av klippningsschema)"
                 }
             }
         },
@@ -121,7 +122,7 @@
                 },
                 "device": {
                     "name": "Enhet",
-                    "description": "Den IR-enhet som kommandot ska skickas till. Detta är valfritt och endast nödvändigt om kommandot sparades med en enhet." 
+                    "description": "Den IR-enhet som kommandot ska skickas till. Detta är valfritt och endast nödvändigt om kommandot sparades med en enhet."
                 }
             }
         }

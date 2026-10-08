@@ -95,7 +95,8 @@
                     "host": "Adres IP lub nazwa hosta",
                     "local_key": "Local key",
                     "protocol_version": "Wersja protokołu (spróbuj auto jeśli nieznana)",
-                    "poll_only": "Poll only (spróbuj jeśli Twoje urządzenie nie działa w pełni)"
+                    "poll_only": "Poll only (spróbuj jeśli Twoje urządzenie nie działa w pełni)",
+                    "schedule_entity": "Asystent harmonogramu (synchronizacja harmonogramu koszenia)"
                 }
             }
         },

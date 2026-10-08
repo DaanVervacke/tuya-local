@@ -95,7 +95,8 @@
                     "host": "IP addresse eller vertsnavn",
                     "local_key": "Lokal nøkkel",
                     "protocol_version": "Protocol versjon (prøv auto hvis du der usikker)",
-                    "poll_only": "Kun poll (prøv dette hvis enhenten ikke virker ordentlig)"
+                    "poll_only": "Kun poll (prøv dette hvis enhenten ikke virker ordentlig)",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },

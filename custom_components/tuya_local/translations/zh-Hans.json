@@ -95,7 +95,8 @@
                     "host": "IP地址或主机名",
                     "local_key": "Local key",
                     "protocol_version": "协议版本（如果不清楚，请选择自动）",
-                    "poll_only": "仅轮询（如果设备无法正常工作，请选择此项）"
+                    "poll_only": "仅轮询（如果设备无法正常工作，请选择此项）",
+                    "schedule_entity": "Schedule helper (mower schedule sync)"
                 }
             }
         },
@@ -117,7 +118,7 @@
                 },
                 "command": {
                     "name": "命令",
-                    "description": "要发送的命令。必须是之前由此集成为此遥控器学习的命令。" 
+                    "description": "要发送的命令。必须是之前由此集成为此遥控器学习的命令。"
                 },
                 "device": {
                     "name": "设备",
