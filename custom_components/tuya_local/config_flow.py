@@ -635,13 +635,12 @@ class OptionsFlowHandler(OptionsFlow):
             else:
                 errors["base"] = "connection"
 
-        schedule_options = [
-            SelectOptionDict(value="", label="None (schedule not synced)")
-        ]
-        for state in self.hass.states.async_all("schedule"):
-            schedule_options.append(
-                SelectOptionDict(value=state.entity_id, label=state.name)
-            )
+        cfg = await self.hass.async_add_executor_job(
+            get_config,
+            config[CONF_TYPE],
+        )
+        if cfg is None:
+            return self.async_abort(reason="not_supported")
 
         schema = {
             vol.Required(
@@ -656,26 +655,33 @@ class OptionsFlowHandler(OptionsFlow):
             vol.Required(
                 CONF_POLL_ONLY, default=config.get(CONF_POLL_ONLY, False)
             ): bool,
-            vol.Optional(
-                CONF_SCHEDULE_ENTITY,
-                default=config.get(CONF_SCHEDULE_ENTITY, ""),
-                description=(
-                    "Weekly schedule helper that the mower follows. The"
-                    " schedule is written to the mower while it is docked."
-                ),
-            ): SelectSelector(
+        }
+        if any(
+            e.entity == "lawn_mower" and e.find_dps("schedule") is not None
+            for e in cfg.all_entities()
+        ):
+            schedule_options = [
+                SelectOptionDict(value="", label="None (schedule not synced)")
+            ]
+            for state in self.hass.states.async_all("schedule"):
+                schedule_options.append(
+                    SelectOptionDict(value=state.entity_id, label=state.name)
+                )
+            schema[
+                vol.Optional(
+                    CONF_SCHEDULE_ENTITY,
+                    default=config.get(CONF_SCHEDULE_ENTITY, ""),
+                    description=(
+                        "Weekly schedule helper that the mower follows. The"
+                        " schedule is written to the mower while it is docked."
+                    ),
+                )
+            ] = SelectSelector(
                 SelectSelectorConfig(
                     options=schedule_options,
                     mode=SelectSelectorMode.DROPDOWN,
                 )
-            ),
-        }
-        cfg = await self.hass.async_add_executor_job(
-            get_config,
-            config[CONF_TYPE],
-        )
-        if cfg is None:
-            return self.async_abort(reason="not_supported")
+            )
 
         return self.async_show_form(
             step_id="user",

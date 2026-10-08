@@ -810,11 +810,47 @@ async def test_options_flow_modifies_config(hass, bypass_setup, mocker):
         CONF_LOCAL_KEY: "new_key",
         CONF_POLL_ONLY: False,
         CONF_PROTOCOL_VERSION: 3.3,
-        CONF_SCHEDULE_ENTITY: "",
     }
     assert "create_entry" == result["type"]
     assert "" == result["title"]
     assert expected == result["data"]
+
+
+@pytest.mark.asyncio
+async def test_options_flow_shows_schedule_for_mowers(hass, bypass_setup, mocker):
+    mock_device = mocker.MagicMock()
+    mocker.patch(
+        "custom_components.tuya_local.config_flow.async_test_connection",
+        return_value=mock_device,
+    )
+
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        version=13,
+        unique_id="uniqueid",
+        data={
+            CONF_DEVICE_ID: "deviceid",
+            CONF_HOST: "hostname",
+            CONF_LOCAL_KEY: TESTKEY,
+            CONF_NAME: "test",
+            CONF_POLL_ONLY: False,
+            CONF_PROTOCOL_VERSION: "auto",
+            CONF_TYPE: "moebot_s_mower",
+        },
+    )
+    config_entry.add_to_hass(hass)
+
+    assert await hass.config_entries.async_setup(config_entry.entry_id)
+    await hass.async_block_till_done()
+    hass.states.async_set("schedule.test", "off")
+    form = await hass.config_entries.options.async_init(config_entry.entry_id)
+    assert CONF_SCHEDULE_ENTITY in str(form["data_schema"])
+    result = await hass.config_entries.options.async_configure(
+        form["flow_id"],
+        user_input={CONF_SCHEDULE_ENTITY: "schedule.test"},
+    )
+    assert result["type"] == "create_entry"
+    assert result["data"][CONF_SCHEDULE_ENTITY] == "schedule.test"
 
 
 @pytest.mark.asyncio
